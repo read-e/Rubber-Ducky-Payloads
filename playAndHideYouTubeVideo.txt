@@ -1,0 +1,55 @@
+REM     TITLE: PlayAndHideYouTubeVideo
+REM     AUTHOR: LIAM REIDY
+REM             https://github.com/read-e
+REM     DESCRIPTION: Creates multiple desktops and plays a YouTube video
+REM                  on the furthest one using Edge (because windows 10 & 11
+REM                  11 installs have it), then switches back to the primary
+REM                  desktop. 
+REM     TARGET: Windows 10, 11
+
+REM     Delay before the start of the program
+DELAY 3000
+
+REM | Creates the new desktops
+VAR $X = 10
+WHILE ( $X != 0 )
+    INJECT_MOD
+    HOLD CONTROL
+    GUI d
+    
+    INJECT_MOD
+    RELEASE CONTROL
+
+    DELAY 300
+    $X = ( $X - 1 )
+END_WHILE
+
+REM | Opens Edge, pastes the link, presses play and fullscreen
+GUI r
+DELAY 200
+STRINGLN powershell
+DELAY 800
+STRINGLN start-process "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+DELAY 500
+
+REM  ---------------------------------------
+REM  Here is where you can put your own link! Right now it plays "DM" by fromis_9
+STRINGLN https://www.youtube.com/watch?v=4gXmClk8rKI
+REM  ---------------------------------------
+
+DELAY 2400
+STRING f
+DELAY 500
+
+REM | Switches back to desktop 1
+WHILE ( $X != 11 )
+    INJECT_MOD
+    HOLD CONTROL
+    GUI LEFTARROW
+
+    INJECT_MOD
+    RELEASE CONTROL
+
+    DELAY 200
+    $X = ( $X + 1 )
+END_WHILE
