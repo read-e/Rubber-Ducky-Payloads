@@ -10,7 +10,8 @@ REM     TARGET: Windows 10, 11
 REM     Delay before the start of the program
 DELAY 3000
 
-REM | Creates the new desktops
+REM | Creates the new desktops, making the video harder to find
+REM | X controls the number of desktops created
 VAR $X = 10
 WHILE ( $X != 0 )
     INJECT_MOD
@@ -33,15 +34,17 @@ STRINGLN start-process "C:\Program Files (x86)\Microsoft\Edge\Application\msedge
 DELAY 500
 
 REM  ---------------------------------------
-REM  Here is where you can put your own link! Right now it plays "DM" by fromis_9
+REM  Here is where you can put your own link! Right now it plays the song "DM" by fromis_9
 STRINGLN https://www.youtube.com/watch?v=4gXmClk8rKI
 REM  ---------------------------------------
 
-DELAY 2400
+REM | The following delay can be extended if internet speeds are
+REM | slow, but should not be shortened
+DELAY 4000
 STRING f
 DELAY 500
 
-REM | Switches back to desktop 1
+REM | Switches back to desktop 1, the conditional number should be the number of desktops created plus 1
 WHILE ( $X != 11 )
     INJECT_MOD
     HOLD CONTROL
